@@ -14,7 +14,6 @@ function Playstation() {
             const response = await axios.get(url)
             const data = response.data
             const newData = data.results.slice(0, 3)
-            console.log(newData)
             setDataApi(newData)
         }
 
