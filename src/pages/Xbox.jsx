@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Context from "../context/Context";
+import Navbar from "../components/Navbar";
 
 
 function Xbox() {
 
     const [dataApi, setDataApi] = useState(null)
-
+    const { price, setPrice } = useContext(Context)
 
     useEffect(() => {
         async function fetchApi() {
@@ -22,6 +24,9 @@ function Xbox() {
 
     return (
         <>
+
+            <Navbar />
+            
             {!dataApi ? "loading" : dataApi.map((element, index) => (
                 <div>
                     <h4>{element.title}</h4>

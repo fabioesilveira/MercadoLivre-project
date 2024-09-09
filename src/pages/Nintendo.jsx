@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Context from "../context/Context";
+import Navbar from "../components/Navbar";
 
 
 function Nintendo() {
     const [dataApi, setDataApi] = useState(null)
-    
+    const { price, setPrice } = useContext(Context)
 
     useEffect(() => {
         async function fetchApi() {
@@ -18,9 +20,16 @@ function Nintendo() {
         fetchApi();
     }, [])
 
+    function handleClick(element) {
+        setPrice(element.price + price)
+        setProduct([...product, element])
+    }
 
     return (
         <>
+
+            <Navbar />
+
             {!dataApi ? "loading" : dataApi.map((element, index) => (
                 <div>
                     <h4>{element.title}</h4>
@@ -29,7 +38,10 @@ function Nintendo() {
                     <button onClick={() => handleClick(element)}>ADD TO CART</button>
                 </div>
 
+
             ))}
+
+            
         </>
     )
 }

@@ -1,12 +1,15 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import Context from "../context/Context"
+import { Link } from "react-router-dom"
+import Navbar from "../components/Navbar"
 
 
 function Playstation() {
 
     const [dataApi, setDataApi] = useState(null)
-    const [price, setPrice] = useState(0)
     const [product, setProduct] = useState([])
+    const { price, setPrice } = useContext(Context)
 
     useEffect(() => {
         async function fetchApi() {
@@ -27,6 +30,8 @@ function Playstation() {
 
     return (
         <>
+            <Navbar />
+
             {!dataApi ? "loading" : dataApi.map((element, index) => (
                 <div>
                     <h4>{element.title}</h4>
@@ -44,6 +49,7 @@ function Playstation() {
                 </>
             ))}
             <h4>TOTAL PRICE: ${price}</h4>
+            <Link to="/cart">Checkout</Link>
         </>
     )
 }
