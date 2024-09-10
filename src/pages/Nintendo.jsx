@@ -2,10 +2,12 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 
 function Nintendo() {
     const [dataApi, setDataApi] = useState(null)
+    const [product, setProduct] = useState([])
     const { price, setPrice } = useContext(Context)
 
     useEffect(() => {
@@ -40,8 +42,12 @@ function Nintendo() {
 
 
             ))}
+            <hr></hr>
 
-            
+            <h4>TOTAL PRICE: ${price}</h4>
+            <Link to="/cart">Checkout</Link>
+
+
         </>
     )
 }

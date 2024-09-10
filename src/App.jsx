@@ -4,7 +4,7 @@ import Playstation from "./pages/Playstation";
 import Xbox from "./pages/Xbox";
 import Nintendo from "./pages/Nintendo";
 import Cart from "./pages/Cart";
-import './App.scss';
+
 
 
 
